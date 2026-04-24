@@ -1,0 +1,84 @@
+---
+const events = [
+  {
+    image: '/assets/chennai-react-event.png',
+    badge: 'Tech Event',
+    badgeVariant: 'default' as const,
+    title: 'ChennaiReact #12 – Tech Event',
+    date: 'June 2024',
+    location: 'Chennai, Tamil Nadu',
+    desc: 'Attended ChennaiReact\'s tech event focused on AI in frontend development. Sessions covered Langchain.js, ImageKit.io, and ethical responsibilities of developers in the AI era.',
+    linkedIn: 'https://www.linkedin.com/posts/balaji-a-react_chennaireact12-activity-7339712079337091073-j4DF?utm_source=share&utm_medium=member_desktop&rcm=ACoAADbv3jwBk5cABBAW69vX4Wdj1KEPd6-IKqA',
+  },
+  {
+    image: '/assets/cfc-cbe-roadshow.png',
+    badge: 'Community',
+    badgeVariant: 'default' as const,
+    title: 'Global Freelancers Festival 2026 – Roadshow',
+    date: '2025',
+    location: 'Coimbatore, Tamil Nadu',
+    desc: 'Attended the GFF 2026 Roadshow organized by Chennai Freelancers Club. Gained insights on freelancing challenges, independent work, and professional community building.',
+    linkedIn: 'https://www.linkedin.com/posts/balaji-a-react_freelancing-gff2026-globalfreelancersfestival-activity-7413607569669296128-Bo_4?utm_source=share&utm_medium=member_desktop&rcm=ACoAADbv3jwBk5cABBAW69vX4Wdj1KEPd6-IKqA',
+  },
+  {
+    image: '/assets/gff-2026.png',
+    badge: 'Volunteer 🔥',
+    badgeVariant: 'highlight' as const,
+    title: 'Global Freelancers Festival 2026 – IIT Madras',
+    date: 'March 2026',
+    location: 'IIT Madras Research Park, Chennai',
+    desc: 'Volunteered at GFF2026 by Chennai Freelancers Club at IITMRP. A defining experience — contributed from the inside, built real connections, and came back a different person.',
+    linkedIn: 'https://www.linkedin.com/posts/balaji-a-react_gff2026-gff2026-chennaifreelancersclub-activity-7435389627399745536-xG03?utm_source=share&utm_medium=member_desktop&rcm=ACoAADbv3jwBk5cABBAW69vX4Wdj1KEPd6-IKqA',
+  },
+];
+---
+
+<section id="events" class="py-20 lg:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-4 reveal">
+      Events
+    </h2>
+    <div class="w-16 h-1 bg-primary mx-auto mb-12 reveal"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {events.map(event => (
+        <div class="glass-card overflow-hidden flex flex-col reveal">
+          <div class="relative">
+            <img
+              src={event.image}
+              alt={event.title}
+              class="w-full h-48 object-cover"
+              loading="lazy"
+            />
+            <span
+              class:list={[
+                'absolute top-3 left-3 px-2.5 py-1 text-xs font-semibold rounded-full',
+                event.badgeVariant === 'highlight'
+                  ? 'bg-amber-500/90 text-white'
+                  : 'bg-primary/90 text-white',
+              ]}
+            >
+              {event.badge}
+            </span>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="text-lg font-bold text-white mb-2">{event.title}</h3>
+            <p class="text-text-muted text-xs mb-3">{event.date} &middot; {event.location}</p>
+            <p class="text-text-muted text-sm mb-5 flex-1 line-clamp-3">{event.desc}</p>
+            <a
+              href={event.linkedIn}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary-light transition-colors duration-200"
+            >
+              View on LinkedIn
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

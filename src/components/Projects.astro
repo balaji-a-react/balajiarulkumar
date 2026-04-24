@@ -1,0 +1,78 @@
+---
+const projects = [
+  {
+    title: 'OX AGRY',
+    link: 'https://www.oxagry.com',
+    duration: 'May 2024 – Dec 2025',
+    desc: 'Dynamic agricultural solutions platform empowering farmers with tech insights for productivity, sustainability, and profitability.',
+    tags: ['React', 'TypeScript', 'Redux', 'Zustand', 'GraphQL', 'Google Maps', 'Tailwind CSS'],
+  },
+  {
+    title: 'OX BEMA',
+    link: 'https://app.oxbema.com',
+    duration: 'May 2024 – Dec 2025',
+    desc: 'Comprehensive employee management system for handling personal info, leaves, project assignments, team and recruitment management.',
+    tags: ['React', 'TypeScript', 'GraphQL', 'Redux', 'Context API'],
+  },
+  {
+    title: 'OX Group Corporate Website',
+    link: 'https://oxgroup.in',
+    duration: 'May 2025 – Dec 2025',
+    desc: 'High-performance corporate website for OX Group built as a static site using Astro. Led a team of 3 developers.',
+    tags: ['Astro', 'JavaScript', 'Tailwind CSS'],
+  },
+  {
+    title: 'OX SoftwareS Corporate Website',
+    link: 'https://oxsoftwares.com',
+    duration: 'May 2025 – Dec 2025',
+    desc: 'Company website showcasing services, portfolio, and team info with responsive design and optimal performance.',
+    tags: ['Astro', 'JavaScript', 'Tailwind CSS'],
+  },
+  {
+    title: 'Gowtham Lodge',
+    link: 'https://gowthamlodge.com',
+    duration: 'May 2025 – Dec 2025',
+    desc: 'Hospitality website featuring room bookings, amenities showcase, and location details with user-friendly navigation.',
+    tags: ['Astro', 'JavaScript', 'Tailwind CSS'],
+  },
+];
+---
+
+<section id="projects" class="py-20 lg:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-4 reveal">
+      Projects
+    </h2>
+    <div class="w-16 h-1 bg-primary mx-auto mb-12 reveal"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map(project => (
+        <div class="glass-card p-6 flex flex-col reveal">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-bold text-white">{project.title}</h3>
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-text-muted hover:text-primary transition-colors"
+              aria-label={`Visit ${project.title}`}
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+            </a>
+          </div>
+          <p class="text-text-muted text-xs mb-3">{project.duration}</p>
+          <p class="text-text-muted text-sm mb-4 flex-1">{project.desc}</p>
+          <div class="flex flex-wrap gap-2">
+            {project.tags.map(tag => (
+              <span class="px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary-light border border-primary/20">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

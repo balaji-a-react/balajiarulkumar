@@ -1,0 +1,131 @@
+---
+const navLinks = [
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#education', label: 'Education' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#events', label: 'Events' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-dark/80 backdrop-blur-md border-b border-transparent">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="#home" class="text-2xl font-bold text-primary tracking-tight">
+        BA
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class="nav-link text-sm text-text-muted hover:text-primary transition-colors duration-200"
+            data-section={link.href.slice(1)}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button
+        id="menu-toggle"
+        class="md:hidden flex flex-col gap-1.5 p-2"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="hamburger-line w-6 h-0.5 bg-text transition-all duration-300"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-text transition-all duration-300"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-text transition-all duration-300"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-dark/95 backdrop-blur-md border-t border-dark-border">
+    <div class="px-4 py-4 flex flex-col gap-4">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="mobile-nav-link text-text-muted hover:text-primary transition-colors duration-200 py-2"
+          data-section={link.href.slice(1)}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navbar = document.getElementById('navbar');
+  const lines = menuToggle?.querySelectorAll('.hamburger-line');
+
+  let isOpen = false;
+
+  menuToggle?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mobileMenu?.classList.toggle('hidden', !isOpen);
+    if (lines && lines.length === 3) {
+      if (isOpen) {
+        (lines[0] as HTMLElement).style.transform = 'rotate(45deg) translate(4px, 4px)';
+        (lines[1] as HTMLElement).style.opacity = '0';
+        (lines[2] as HTMLElement).style.transform = 'rotate(-45deg) translate(4px, -4px)';
+      } else {
+        (lines[0] as HTMLElement).style.transform = '';
+        (lines[1] as HTMLElement).style.opacity = '1';
+        (lines[2] as HTMLElement).style.transform = '';
+      }
+    }
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      isOpen = false;
+      mobileMenu?.classList.add('hidden');
+      if (lines && lines.length === 3) {
+        (lines[0] as HTMLElement).style.transform = '';
+        (lines[1] as HTMLElement).style.opacity = '1';
+        (lines[2] as HTMLElement).style.transform = '';
+      }
+    });
+  });
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar?.classList.add('border-dark-border', 'shadow-lg');
+    } else {
+      navbar?.classList.remove('border-dark-border', 'shadow-lg');
+    }
+  });
+
+  // Active link highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinksAll = document.querySelectorAll('.nav-link, .mobile-nav-link');
+
+  const observerOptions = {
+    rootMargin: '-20% 0px -80% 0px',
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinksAll.forEach(link => {
+          link.classList.toggle('text-primary', link.getAttribute('data-section') === id);
+          link.classList.toggle('text-text-muted', link.getAttribute('data-section') !== id);
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => observer.observe(section));
+</script>

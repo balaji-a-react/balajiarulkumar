@@ -1,0 +1,96 @@
+---
+const experiences = [
+  {
+    title: 'Software Engineer',
+    company: 'OX SoftwareS Private Limited',
+    companyLink: 'https://www.oxsoftwares.com',
+    duration: 'Aug 2024 – Dec 2025',
+    location: 'Palani, Tamil Nadu',
+    bullets: [
+      'Developed and maintained reusable UI components using React JS, TypeScript, JavaScript (ES6+), HTML5, CSS3, and Tailwind CSS for multiple production applications',
+      'Led a team of 3 developers in building static and dynamic web applications, delegating tasks and ensuring timely project delivery',
+      'Translated design specifications into fully functional, responsive frontend components optimized for performance across mobile, tablet, and desktop devices',
+      'Performed code refactoring and optimization, improving component reusability and application performance',
+      'Collaborated with backend developers to integrate REST APIs and GraphQL efficiently',
+      'Utilized Git, GitHub, and GitLab for version control, code reviews, and branching',
+    ],
+    tags: ['React JS', 'TypeScript', 'Tailwind CSS', 'GraphQL', 'REST APIs', 'Git'],
+  },
+  {
+    title: 'Apprentice Software Developer',
+    company: 'OX SoftwareS Private Limited',
+    companyLink: 'https://www.oxsoftwares.com',
+    duration: 'May 2024 – Aug 2024',
+    location: 'Palani, Tamil Nadu',
+    bullets: [
+      'Completed intensive apprenticeship in frontend development, building UI features and reusable components',
+      'Designed user-friendly web pages based on design specs using HTML5, CSS3, JS, React JS',
+      'Learned and implemented the complete UI development workflow: requirements → dev → testing → optimization',
+      'Assisted in optimizing existing web pages for improved loading speed and UX',
+    ],
+    tags: ['React JS', 'HTML5', 'CSS3', 'JavaScript'],
+  },
+];
+---
+
+<section id="experience" class="py-20 lg:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-4 reveal">
+      Experience
+    </h2>
+    <div class="w-16 h-1 bg-primary mx-auto mb-12 reveal"></div>
+
+    <div class="relative">
+      <!-- Timeline Line -->
+      <div class="timeline-line"></div>
+
+      <div class="space-y-12">
+        {experiences.map((exp, index) => (
+          <div class={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            <!-- Timeline dot -->
+            <div class="absolute left-[16px] md:left-1/2 md:-translate-x-1/2 w-3 h-3 rounded-full bg-primary border-2 border-dark z-10 mt-6"></div>
+
+            <!-- Spacer for alternating layout -->
+            <div class="hidden md:block md:w-1/2"></div>
+
+            <!-- Card -->
+            <div class="ml-12 md:ml-0 md:w-1/2 reveal">
+              <div class="glass-card p-6">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                  <h3 class="text-lg font-bold text-white">{exp.title}</h3>
+                  <span class="text-sm text-text-muted">{exp.duration}</span>
+                </div>
+                <a
+                  href={exp.companyLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-primary hover:text-primary-light transition-colors text-sm"
+                >
+                  {exp.company}
+                </a>
+                <p class="text-text-muted text-xs mt-1 mb-4">{exp.location}</p>
+
+                <ul class="space-y-2 mb-4">
+                  {exp.bullets.map(bullet => (
+                    <li class="text-text-muted text-sm flex gap-2">
+                      <span class="text-primary mt-1 flex-shrink-0">▹</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div class="flex flex-wrap gap-2">
+                  {exp.tags.map(tag => (
+                    <span class="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary-light border border-primary/20">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

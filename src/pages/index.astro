@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Skills from '../components/Skills.astro';
+import Experience from '../components/Experience.astro';
+import Education from '../components/Education.astro';
+import Projects from '../components/Projects.astro';
+import Events from '../components/Events.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Navbar />
+  <main>
+    <Hero />
+    <About />
+    <Skills />
+    <Experience />
+    <Education />
+    <Projects />
+    <Events />
+    <Contact />
+  </main>
+  <Footer />
+
+  <script>
+    // Scroll Reveal using Intersection Observer
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    revealElements.forEach((el) => revealObserver.observe(el));
+
+    // Animated Counters
+    const counters = document.querySelectorAll('.counter');
+
+    const counterObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const target = el.dataset.target || '0';
+            const hasPlus = target.includes('+');
+            const numericPart = parseFloat(target.replace('+', ''));
+            const isDecimal = target.includes('.');
+            const duration = 1500;
+            const startTime = performance.now();
+
+            const animate = (currentTime: number) => {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = eased * numericPart;
+
+              if (isDecimal) {
+                el.textContent = current.toFixed(1) + (hasPlus ? '+' : '');
+              } else {
+                el.textContent = Math.floor(current).toString() + (hasPlus ? '+' : '');
+              }
+
+              if (progress < 1) {
+                requestAnimationFrame(animate);
+              }
+            };
+
+            requestAnimationFrame(animate);
+            counterObserver.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    counters.forEach((counter) => counterObserver.observe(counter));
+  </script>
+</Layout>
