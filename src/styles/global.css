@@ -1,26 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
+:root {
+  /* Light theme (default) */
+  --bg: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f4f4f5;
+  --border: #e4e4e7;
+  --text: #18181b;
+  --text-muted: #52525b;
+  --heading: #18181b;
+  --scrollbar-track: #ffffff;
+  --scrollbar-thumb: #c7c7cc;
+  --scrollbar-thumb-hover: #a1a1aa;
+}
+
+html[data-theme='dark'] {
+  /* Dark theme */
+  --bg: #0a0a0a;
+  --bg-card: #111111;
+  --bg-card-hover: #1a1a1a;
+  --border: #1e1e1e;
+  --text: #e4e4e7;
+  --text-muted: #a1a1aa;
+  --heading: #ffffff;
+  --scrollbar-track: #0a0a0a;
+  --scrollbar-thumb: #333333;
+  --scrollbar-thumb-hover: #555555;
+}
+
 @theme {
-  --color-primary: #6366f1;
-  --color-primary-light: #818cf8;
-  --color-dark: #0a0a0a;
-  --color-dark-card: #111111;
-  --color-dark-card-hover: #1a1a1a;
-  --color-dark-border: #1e1e1e;
-  --color-text: #e4e4e7;
-  --color-text-muted: #a1a1aa;
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-dark: var(--bg);
+  --color-dark-card: var(--bg-card);
+  --color-dark-card-hover: var(--bg-card-hover);
+  --color-dark-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-white: var(--heading);
   --font-family-sans: 'Inter', sans-serif;
+}
+
+:root {
+  --primary: #6366f1;
+  --primary-light: #818cf8;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 body {
   font-family: var(--font-family-sans);
-  background-color: var(--color-dark);
-  color: var(--color-text);
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Scroll reveal animations */
@@ -37,28 +77,28 @@ body {
 
 /* Glassmorphism card */
 .glass-card {
-  background: rgba(17, 17, 17, 0.7);
+  background: color-mix(in srgb, var(--bg-card) 72%, transparent);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(99, 102, 241, 0.1);
+  border: 1px solid color-mix(in srgb, var(--primary) 12%, transparent);
   border-radius: 12px;
   transition: all 0.3s ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(99, 102, 241, 0.3);
+  border-color: color-mix(in srgb, var(--primary) 35%, transparent);
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1);
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--primary) 12%, transparent);
 }
 
 /* Hero dot pattern */
 .dot-pattern {
-  background-image: radial-gradient(rgba(99, 102, 241, 0.15) 1px, transparent 1px);
+  background-image: radial-gradient(color-mix(in srgb, var(--primary) 18%, transparent) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
 /* Glow effect for profile image */
 .glow-border {
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.3), 0 0 60px rgba(99, 102, 241, 0.1);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 30%, transparent), 0 0 60px color-mix(in srgb, var(--primary) 10%, transparent);
 }
 
 /* Timeline line */
@@ -68,7 +108,7 @@ body {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--color-primary), transparent);
+  background: linear-gradient(to bottom, var(--primary), transparent);
 }
 
 @media (min-width: 768px) {
@@ -78,20 +118,37 @@ body {
   }
 }
 
+/* Theme toggle icons */
+html[data-theme='dark'] .theme-icon-sun {
+  display: block;
+}
+
+html[data-theme='dark'] .theme-icon-moon {
+  display: none;
+}
+
+html[data-theme='light'] .theme-icon-sun {
+  display: none;
+}
+
+html[data-theme='light'] .theme-icon-moon {
+  display: block;
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-dark);
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--scrollbar-thumb-hover);
 }

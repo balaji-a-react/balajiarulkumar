@@ -25,6 +25,15 @@ const {
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title}</title>
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        var theme =
+          stored ||
+          (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
   </head>
   <body class="antialiased">
     <slot />
