@@ -1,34 +1,30 @@
 ---
 const experiences = [
   {
-    title: 'Software Engineer',
-    company: 'OX SoftwareS Private Limited',
-    companyLink: 'https://www.oxsoftwares.com',
-    duration: 'Aug 2024 – Dec 2025',
-    location: 'Palani, Tamil Nadu',
+    title: 'Founding Software Engineer – Frontend',
+    company: 'Datapique Technologies Pvt. Ltd.',
+    companyLink: '',
+    duration: 'Jan 2026 – Present',
+    location: '',
     bullets: [
-      'Developed and maintained reusable UI components using React JS, TypeScript, JavaScript (ES6+), HTML5, CSS3, and Tailwind CSS for multiple production applications',
-      'Led a team of 3 developers in building static and dynamic web applications, delegating tasks and ensuring timely project delivery',
-      'Translated design specifications into fully functional, responsive frontend components optimized for performance across mobile, tablet, and desktop devices',
-      'Performed code refactoring and optimization, improving component reusability and application performance',
-      'Collaborated with backend developers to integrate REST APIs and GraphQL efficiently',
-      'Utilized Git, GitHub, and GitLab for version control, code reviews, and branching',
+      'Own frontend architecture and technology decisions as the founding frontend engineer, evaluating trade-offs in performance, scalability, and developer experience.',
+      'Build reusable, modular React components following component-driven development, and write unit/component tests using Jest and React Testing Library.',
+      'Collaborate closely with backend and design teams, translating requirements and Figma designs into production-ready UI following Git-based code review practices.',
     ],
-    tags: ['React JS', 'TypeScript', 'Tailwind CSS', 'GraphQL', 'REST APIs', 'Git'],
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'GraphQL', 'REST APIs', 'Zustand', 'Context API', 'Git', 'Jest', 'React Testing Library'],
   },
   {
-    title: 'Apprentice Software Developer',
-    company: 'OX SoftwareS Private Limited',
+    title: 'Associate Software Engineer',
+    company: 'OX Software Private Limited',
     companyLink: 'https://www.oxsoftwares.com',
-    duration: 'May 2024 – Aug 2024',
+    duration: 'May 2024 – Dec 2025',
     location: 'Palani, Tamil Nadu',
     bullets: [
-      'Completed intensive apprenticeship in frontend development, building UI features and reusable components',
-      'Designed user-friendly web pages based on design specs using HTML5, CSS3, JS, React JS',
-      'Learned and implemented the complete UI development workflow: requirements → dev → testing → optimization',
-      'Assisted in optimizing existing web pages for improved loading speed and UX',
+      'Developed and maintained responsive, production frontend modules across multiple company products using React.js and TypeScript.',
+      'Built reusable UI components documented with Storybook, and integrated REST/GraphQL APIs to power real-time, data-driven interfaces.',
+      'Participated in sprint planning, code reviews, and requirement-gathering discussions as part of cross-functional, agile teams, managing state with Zustand and Context API.',
     ],
-    tags: ['React JS', 'HTML5', 'CSS3', 'JavaScript'],
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'GraphQL', 'Zustand', 'Context API', 'Git', 'Storybook'],
   },
 ];
 ---
@@ -60,15 +56,19 @@ const experiences = [
                   <h3 class="text-lg font-bold text-white">{exp.title}</h3>
                   <span class="text-sm text-text-muted">{exp.duration}</span>
                 </div>
-                <a
-                  href={exp.companyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-primary hover:text-primary-light transition-colors text-sm"
-                >
-                  {exp.company}
-                </a>
-                <p class="text-text-muted text-xs mt-1 mb-4">{exp.location}</p>
+                {exp.companyLink ? (
+                  <a
+                    href={exp.companyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary hover:text-primary-light transition-colors text-sm"
+                  >
+                    {exp.company}
+                  </a>
+                ) : (
+                  <p class="text-primary text-sm mb-4">{exp.company}</p>
+                )}
+                {exp.location && <p class="text-text-muted text-xs mt-1 mb-4">{exp.location}</p>}
 
                 <ul class="space-y-2 mb-4">
                   {exp.bullets.map(bullet => (

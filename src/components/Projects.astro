@@ -1,18 +1,42 @@
 ---
 const projects = [
   {
+    title: 'Microservices-Based E-commerce Platform',
+    org: 'Datapique Technologies',
+    link: '',
+    duration: '',
+    desc: 'Developed a scalable React frontend for an enterprise E-commerce platform following a microservices architecture, integrating independently managed backend services through REST APIs. Designed and built a 15+ component reusable UI library and implemented pixel-perfect Figma designs, contributing to a modular, maintainable, and scalable frontend architecture.',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'GraphQL', 'Zustand', 'Context API'],
+  },
+  {
+    title: 'Hashvith Naturals',
+    org: 'Freelance',
+    link: 'https://hashvithnaturals.com',
+    duration: '',
+    desc: 'E-commerce and wholesale website for natural farm produce from the Kodaikanal Hills — avocados, spices, coffee, gulkand, and honey — featuring WhatsApp ordering and delivery across India.',
+    tags: ['Astro', 'JavaScript', 'Tailwind CSS'],
+  },
+  {
+    title: 'Murugu Tamil Payilagam',
+    org: 'Freelance',
+    link: 'https://murugutamilpayilagam.com',
+    duration: '',
+    desc: 'Bilingual (Tamil/English) website for a higher education guidance center in Coimbatore, offering coaching for competitive exams including TNPSC, TRB, TET, JEE, NEET, and UPSC.',
+    tags: ['Astro', 'JavaScript', 'Tailwind CSS'],
+  },
+  {
     title: 'OX AGRY',
     link: 'https://www.oxagry.com',
     duration: 'May 2024 – Dec 2025',
-    desc: 'Dynamic agricultural solutions platform empowering farmers with tech insights for productivity, sustainability, and profitability.',
-    tags: ['React', 'TypeScript', 'Redux', 'Zustand', 'GraphQL', 'Google Maps', 'Tailwind CSS'],
+    desc: 'AgriTech platform empowering 1000+ farmers with technology-driven insights. Built responsive UI modules and integrated GraphQL APIs to power core platform features.',
+    tags: ['React.js', 'TypeScript', 'Context API', 'GraphQL', 'Zustand'],
   },
   {
     title: 'OX BEMA',
     link: 'https://app.oxbema.com',
     duration: 'May 2024 – Dec 2025',
-    desc: 'Comprehensive employee management system for handling personal info, leaves, project assignments, team and recruitment management.',
-    tags: ['React', 'TypeScript', 'GraphQL', 'Redux', 'Context API'],
+    desc: 'Employee management system for HR, leave, projects, and recruitment, used by 100+ employees. Owned the recruitment module end-to-end, from requirement gathering through development, and built role-based dashboards, reusable components, form validation, and data tables.',
+    tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Context API', 'GraphQL'],
   },
   {
     title: 'OX Group Corporate Website',
@@ -50,19 +74,21 @@ const projects = [
         <div class="glass-card p-6 flex flex-col reveal">
           <div class="flex items-center justify-between mb-3">
             <h3 class="text-lg font-bold text-white">{project.title}</h3>
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-text-muted hover:text-primary transition-colors"
-              aria-label={`Visit ${project.title}`}
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-              </svg>
-            </a>
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-text-muted hover:text-primary transition-colors"
+                aria-label={`Visit ${project.title}`}
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </a>
+            )}
           </div>
-          <p class="text-text-muted text-xs mb-3">{project.duration}</p>
+          {(project.duration || project.org) && <p class="text-text-muted text-xs mb-3">{project.duration || project.org}</p>}
           <p class="text-text-muted text-sm mb-4 flex-1">{project.desc}</p>
           <div class="flex flex-wrap gap-2">
             {project.tags.map(tag => (
