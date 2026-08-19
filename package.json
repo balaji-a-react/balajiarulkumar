@@ -2,6 +2,7 @@
   "name": "site",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.22.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -12,5 +13,11 @@
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.17.1",
     "tailwindcss": "^4.2.1"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   }
 }
