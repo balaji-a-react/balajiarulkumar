@@ -1,13 +1,14 @@
 ---
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#education', label: 'Education' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#events', label: 'Events' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#home', label: 'Home', section: 'home' },
+  { href: '/#about', label: 'About', section: 'about' },
+  { href: '/#skills', label: 'Skills', section: 'skills' },
+  { href: '/#experience', label: 'Experience', section: 'experience' },
+  { href: '/#education', label: 'Education', section: 'education' },
+  { href: '/#projects', label: 'Projects', section: 'projects' },
+  { href: '/#events', label: 'Events', section: 'events' },
+  { href: '/resume', label: 'Resume', section: 'resume' },
+  { href: '/#contact', label: 'Contact', section: 'contact' },
 ];
 ---
 
@@ -15,7 +16,7 @@ const navLinks = [
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
-      <a href="#home" class="text-2xl font-bold text-primary tracking-tight">
+      <a href="/#home" class="text-2xl font-bold text-primary tracking-tight">
         BA
       </a>
 
@@ -25,7 +26,7 @@ const navLinks = [
           <a
             href={link.href}
             class="nav-link text-sm text-text-muted hover:text-primary transition-colors duration-200"
-            data-section={link.href.slice(1)}
+            data-section={link.section}
           >
             {link.label}
           </a>
@@ -68,7 +69,7 @@ const navLinks = [
         <a
           href={link.href}
           class="mobile-nav-link text-text-muted hover:text-primary transition-colors duration-200 py-2"
-          data-section={link.href.slice(1)}
+          data-section={link.section}
         >
           {link.label}
         </a>
