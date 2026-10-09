@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://balaji-a.netlify.app/sitemap.xml

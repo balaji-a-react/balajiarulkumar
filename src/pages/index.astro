@@ -14,7 +14,7 @@ import Footer from '../components/Footer.astro';
 
 <Layout>
   <Navbar />
-  <main>
+  <main id="main-content">
     <Hero />
     <About />
     <Experience />
@@ -27,62 +27,70 @@ import Footer from '../components/Footer.astro';
   <Footer />
 
   <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Scroll Reveal using Intersection Observer
     const revealElements = document.querySelectorAll('.reveal');
 
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+    if (prefersReducedMotion) {
+      revealElements.forEach((el) => el.classList.add('active'));
+    } else {
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
 
-    revealElements.forEach((el) => revealObserver.observe(el));
+      revealElements.forEach((el) => revealObserver.observe(el));
+    }
 
-    // Animated Counters
+    // Animated Counters (fallback values are rendered in the markup for no-JS)
     const counters = document.querySelectorAll('.counter');
 
-    const counterObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            const target = el.dataset.target || '0';
-            const hasPlus = target.includes('+');
-            const numericPart = parseFloat(target.replace('+', ''));
-            const isDecimal = target.includes('.');
-            const duration = 1500;
-            const startTime = performance.now();
+    if (!prefersReducedMotion) {
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              const target = el.dataset.target || '0';
+              const hasPlus = target.includes('+');
+              const numericPart = parseFloat(target.replace('+', ''));
+              const isDecimal = target.includes('.');
+              const duration = 1500;
+              const startTime = performance.now();
 
-            const animate = (currentTime: number) => {
-              const elapsed = currentTime - startTime;
-              const progress = Math.min(elapsed / duration, 1);
-              const eased = 1 - Math.pow(1 - progress, 3);
-              const current = eased * numericPart;
+              const animate = (currentTime: number) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = eased * numericPart;
 
-              if (isDecimal) {
-                el.textContent = current.toFixed(1) + (hasPlus ? '+' : '');
-              } else {
-                el.textContent = Math.floor(current).toString() + (hasPlus ? '+' : '');
-              }
+                if (isDecimal) {
+                  el.textContent = current.toFixed(1) + (hasPlus ? '+' : '');
+                } else {
+                  el.textContent = Math.floor(current).toString() + (hasPlus ? '+' : '');
+                }
 
-              if (progress < 1) {
-                requestAnimationFrame(animate);
-              }
-            };
+                if (progress < 1) {
+                  requestAnimationFrame(animate);
+                }
+              };
 
-            requestAnimationFrame(animate);
-            counterObserver.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+              requestAnimationFrame(animate);
+              counterObserver.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
 
-    counters.forEach((counter) => counterObserver.observe(counter));
+      counters.forEach((counter) => counterObserver.observe(counter));
+    }
   </script>
 </Layout>

@@ -67,6 +67,8 @@ const downloadName = 'Balaji-Arulkumar-Resume.pdf';
           id="menu-toggle"
           class="md:hidden flex flex-col gap-1.5 p-2"
           aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
         >
           <span class="hamburger-line w-6 h-0.5 bg-text transition-all duration-300"></span>
           <span class="hamburger-line w-6 h-0.5 bg-text transition-all duration-300"></span>
@@ -113,6 +115,7 @@ const downloadName = 'Balaji-Arulkumar-Resume.pdf';
   menuToggle?.addEventListener('click', () => {
     isOpen = !isOpen;
     mobileMenu?.classList.toggle('hidden', !isOpen);
+    menuToggle?.setAttribute('aria-expanded', String(isOpen));
     if (lines && lines.length === 3) {
       if (isOpen) {
         (lines[0] as HTMLElement).style.transform = 'rotate(45deg) translate(4px, 4px)';
@@ -131,6 +134,7 @@ const downloadName = 'Balaji-Arulkumar-Resume.pdf';
     link.addEventListener('click', () => {
       isOpen = false;
       mobileMenu?.classList.add('hidden');
+      menuToggle?.setAttribute('aria-expanded', 'false');
       if (lines && lines.length === 3) {
         (lines[0] as HTMLElement).style.transform = '';
         (lines[1] as HTMLElement).style.opacity = '1';
