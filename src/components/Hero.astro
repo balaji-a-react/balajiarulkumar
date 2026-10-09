@@ -7,6 +7,46 @@ const contact = {
   phone: '+91 96779 32264',
   phoneHref: 'tel:+919677932264',
 };
+
+const summary =
+  '2+ years of combined professional and independent experience building production web applications in React.js, TypeScript, and JavaScript — with GraphQL and REST API integration, reusable component libraries, and business workflows for ERP and client websites.';
+
+const keywords = [
+  'React.js',
+  'React',
+  'TypeScript',
+  'JavaScript',
+  'Astro',
+  'Tailwind CSS',
+  'GraphQL',
+  'REST APIs',
+  'REST API',
+];
+
+const escapeHtml = (str: string) =>
+  str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+const escapeRegExp = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const highlight = (text: string) => {
+  let result = escapeHtml(text);
+  const matches: string[] = [];
+  const sorted = [...keywords].sort((a, b) => b.length - a.length);
+
+  sorted.forEach((keyword) => {
+    const pattern = new RegExp(`(?<![A-Za-z0-9])${escapeRegExp(keyword)}(?![A-Za-z0-9])`, 'g');
+    result = result.replace(pattern, (match) => {
+      matches.push(match);
+      return `\u0000${matches.length - 1}\u0000`;
+    });
+  });
+
+  return result.replace(
+    /\u0000(\d+)\u0000/g,
+    (_, index) =>
+      `<span class="text-primary-light font-medium">${matches[Number(index)]}</span>`
+  );
+};
 ---
 
 <section id="home" class="min-h-screen flex items-center justify-center dot-pattern relative py-24 md:py-16">
@@ -28,12 +68,10 @@ const contact = {
         <p class="text-xl sm:text-2xl text-primary-light font-medium mb-4 reveal">
           Frontend React Developer
         </p>
-        <p class="text-text-muted text-base sm:text-lg max-w-lg mx-auto md:mx-0 mb-6 reveal">
-          2+ years of combined professional and independent experience building production web
-          applications in React.js, TypeScript, and JavaScript — with GraphQL and REST API
-          integration, reusable component libraries, and business workflows for ERP and client
-          websites.
-        </p>
+        <p
+          class="text-text-muted text-base sm:text-lg max-w-lg mx-auto md:mx-0 mb-6 reveal"
+          set:html={highlight(summary)}
+        />
 
         <!-- Inline Contact Details -->
         <div class="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2 mb-8 reveal">

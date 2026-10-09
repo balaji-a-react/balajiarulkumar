@@ -28,8 +28,48 @@ const traits = [
     desc: 'Working within cross-functional agile teams',
   },
 ];
----
 
+const summary =
+  'Frontend React Developer with 2+ years of combined professional and independent development experience building production web applications using React.js, TypeScript, and Astro. Experienced in reusable UI components, GraphQL and REST API integration, and business workflows for ERP, agricultural technology, and client websites. Delivered independent websites and contributed to live products in collaboration with backend developers.';
+
+const keywords = [
+  'React.js',
+  'React',
+  'TypeScript',
+  'JavaScript',
+  'Astro',
+  'Tailwind CSS',
+  'GraphQL',
+  'REST APIs',
+  'REST API',
+  'ERP',
+];
+
+const escapeHtml = (str: string) =>
+  str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+const escapeRegExp = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const highlight = (text: string) => {
+  let result = escapeHtml(text);
+  const matches: string[] = [];
+  const sorted = [...keywords].sort((a, b) => b.length - a.length);
+
+  sorted.forEach((keyword) => {
+    const pattern = new RegExp(`(?<![A-Za-z0-9])${escapeRegExp(keyword)}(?![A-Za-z0-9])`, 'g');
+    result = result.replace(pattern, (match) => {
+      matches.push(match);
+      return `\u0000${matches.length - 1}\u0000`;
+    });
+  });
+
+  return result.replace(
+    /\u0000(\d+)\u0000/g,
+    (_, index) =>
+      `<span class="text-primary-light font-medium">${matches[Number(index)]}</span>`
+  );
+};
+---
 <section id="about" class="py-20 lg:py-28">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-4 reveal">
@@ -40,14 +80,7 @@ const traits = [
     <div class="flex flex-col lg:flex-row gap-12 items-start">
       <!-- Text -->
       <div class="flex-1 reveal">
-        <p class="text-text-muted text-lg leading-relaxed">
-          Frontend React Developer with 2+ years of combined professional and independent
-          development experience building production web applications using React.js,
-          TypeScript, and Astro. Experienced in reusable UI components, GraphQL and REST API
-          integration, and business workflows for ERP, agricultural technology, and client
-          websites. Delivered independent websites and contributed to live products in
-          collaboration with backend developers.
-        </p>
+        <p class="text-text-muted text-lg leading-relaxed" set:html={highlight(summary)} />
       </div>
 
       <!-- Stats -->
