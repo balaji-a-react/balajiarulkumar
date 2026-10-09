@@ -17,7 +17,7 @@ const ogImage = new URL('/assets/profile.png', Astro.site ?? 'https://balaji-a.n
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,8 +25,7 @@ const ogImage = new URL('/assets/profile.png', Astro.site ?? 'https://balaji-a.n
     <meta name="author" content={siteName} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
-    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0a" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
@@ -48,9 +47,7 @@ const ogImage = new URL('/assets/profile.png', Astro.site ?? 'https://balaji-a.n
     <script is:inline>
       (function () {
         var stored = localStorage.getItem('theme');
-        var theme =
-          stored ||
-          (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        var theme = stored || 'dark';
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
