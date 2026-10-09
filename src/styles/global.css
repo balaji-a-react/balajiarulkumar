@@ -90,6 +90,30 @@ body {
   box-shadow: 0 8px 30px color-mix(in srgb, var(--primary) 12%, transparent);
 }
 
+/* Project filter pills */
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+  background: color-mix(in srgb, var(--bg-card) 72%, transparent);
+  color: var(--text-muted);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--primary) 45%, transparent);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
 /* Hero dot pattern */
 .dot-pattern {
   background-image: radial-gradient(color-mix(in srgb, var(--primary) 18%, transparent) 1px, transparent 1px);

@@ -1,7 +1,48 @@
 ---
 const projects = [
   {
+    title: 'OX AGRY',
+    category: 'ox',
+    link: 'https://www.oxagry.com',
+    duration: 'May 2024 – Feb 2025',
+    desc: 'Dynamic and innovative AgriTech platform dedicated to providing cutting-edge agricultural solutions. Empowering farmers and agricultural businesses with the latest technology and insights to enhance productivity, sustainability, and profitability.',
+    tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Context API', 'Zustand', 'GraphQL', 'Apollo Client', 'Google Maps', 'PayU', 'Cashfree'],
+  },
+  {
+    title: 'OX BEMA',
+    category: 'ox',
+    link: 'https://app.oxbema.com',
+    duration: 'Feb 2025 – Dec 2025',
+    desc: 'Comprehensive employee management system designed to streamline and simplify the management of employee details, including personal information, leave, project assignments, team and recruitment management.',
+    tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Context API', 'Zustand', 'GraphQL', 'Apollo Client'],
+  },
+  {
+    title: 'OX Group Corporate Website',
+    category: 'ox',
+    link: 'https://oxgroup.in',
+    duration: 'May 2025 – Dec 2025',
+    desc: 'High-performance corporate website for OX Group built as a static site using Astro. Led a team of 3 developers.',
+    tags: ['Astro', 'JavaScript', 'Tailwind CSS'],
+  },
+  {
+    title: 'OX Softwares Corporate Website',
+    category: 'ox',
+    link: 'https://oxsoftwares.com',
+    duration: 'May 2025 – Dec 2025',
+    desc: 'Company website showcasing services, portfolio, and team info with responsive design and optimal performance.',
+    tags: ['Astro', 'JavaScript', 'Tailwind CSS'],
+  },
+  {
+    title: 'AsherGo — Malaysian ERP System',
+    category: 'independent',
+    link: 'https://ashergo.com',
+    duration: 'July 2026 – September 2026',
+    desc: 'Contributed to an existing ERP application for Ria Kistana, Malaysia, by implementing the Leave Management module, including leave application forms, leave listings, approval workflows, and REST API integration.',
+    tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'REST APIs', 'Zod'],
+  },
+  {
     title: 'Microservices-Based E-commerce Platform',
+    category: 'independent',
     org: 'Freelance',
     link: '',
     duration: '',
@@ -9,57 +50,79 @@ const projects = [
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'GraphQL', 'Zustand', 'Context API'],
   },
   {
-    title: 'Hashvith Naturals',
-    org: 'Freelance',
+    title: 'Hashvith Naturals — Agricultural Products Website',
+    category: 'independent',
     link: 'https://hashvithnaturals.com',
-    duration: '',
-    desc: 'E-commerce and wholesale website for natural farm produce from the Kodaikanal Hills — avocados, spices, coffee, gulkand, and honey — featuring WhatsApp ordering and delivery across India.',
-    tags: ['Astro', 'JavaScript', 'Tailwind CSS'],
+    duration: 'Jan 2026 – Apr 2026',
+    desc: 'Independently developed a responsive website for a natural agricultural products brand, showcasing products and business information through reusable UI components.',
+    tags: ['Astro', 'TypeScript', 'Tailwind CSS'],
   },
   {
-    title: 'Murugu Tamil Payilagam',
-    org: 'Freelance',
+    title: 'Murugu Tamil Payilagam — Educational Institute Website',
+    category: 'independent',
     link: 'https://murugutamilpayilagam.com',
-    duration: '',
-    desc: 'Bilingual (Tamil/English) website for a higher education guidance center in Coimbatore, offering coaching for competitive exams including TNPSC, TRB, TET, JEE, NEET, and UPSC.',
-    tags: ['Astro', 'JavaScript', 'Tailwind CSS'],
-  },
-  {
-    title: 'OX AGRY',
-    link: 'https://www.oxagry.com',
-    duration: 'May 2024 – Dec 2025',
-    desc: 'AgriTech platform empowering 1000+ farmers with technology-driven insights. Built responsive UI modules and integrated GraphQL APIs to power core platform features.',
-    tags: ['React.js', 'TypeScript', 'Context API', 'GraphQL', 'Zustand'],
-  },
-  {
-    title: 'OX BEMA',
-    link: 'https://app.oxbema.com',
-    duration: 'May 2024 – Dec 2025',
-    desc: 'Employee management system for HR, leave, projects, and recruitment, used by 100+ employees. Owned the recruitment module end-to-end, from requirement gathering through development, and built role-based dashboards, reusable components, form validation, and data tables.',
-    tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Context API', 'GraphQL'],
-  },
-  {
-    title: 'OX Group Corporate Website',
-    link: 'https://oxgroup.in',
-    duration: 'May 2025 – Dec 2025',
-    desc: 'High-performance corporate website for OX Group built as a static site using Astro. Led a team of 3 developers.',
-    tags: ['Astro', 'JavaScript', 'Tailwind CSS'],
-  },
-  {
-    title: 'OX SoftwareS Corporate Website',
-    link: 'https://oxsoftwares.com',
-    duration: 'May 2025 – Dec 2025',
-    desc: 'Company website showcasing services, portfolio, and team info with responsive design and optimal performance.',
-    tags: ['Astro', 'JavaScript', 'Tailwind CSS'],
+    duration: 'May 2026 – Jun 2026',
+    desc: 'Independently developed a responsive website for a Tamil educational institute, presenting coaching programs, course information, and enrollment details.',
+    tags: ['Astro', 'TypeScript', 'Tailwind CSS'],
   },
   {
     title: 'Gowtham Lodge',
+    category: 'independent',
     link: 'https://gowthamlodge.com',
     duration: 'May 2025 – Dec 2025',
     desc: 'Hospitality website featuring room bookings, amenities showcase, and location details with user-friendly navigation.',
     tags: ['Astro', 'JavaScript', 'Tailwind CSS'],
   },
 ];
+
+const filters = [
+  { value: 'all', label: 'All' },
+  { value: 'ox', label: 'OX Softwares' },
+  { value: 'independent', label: 'Independent / Freelance' },
+];
+
+const keywords = [
+  'Microservices',
+  'Leave Management',
+  'ERP',
+  'React.js',
+  'React',
+  'TypeScript',
+  'Tailwind CSS',
+  'GraphQL',
+  'Zustand',
+  'Context API',
+  'Astro',
+  'JavaScript',
+  'REST APIs',
+  'REST API',
+  'Zod',
+];
+
+const escapeHtml = (str: string) =>
+  str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+const escapeRegExp = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const highlight = (text: string) => {
+  let result = escapeHtml(text);
+  const matches: string[] = [];
+  const sorted = [...keywords].sort((a, b) => b.length - a.length);
+
+  sorted.forEach((keyword) => {
+    const pattern = new RegExp(`(?<![A-Za-z0-9])${escapeRegExp(keyword)}(?![A-Za-z0-9])`, 'g');
+    result = result.replace(pattern, (match) => {
+      matches.push(match);
+      return `\u0000${matches.length - 1}\u0000`;
+    });
+  });
+
+  return result.replace(
+    /\u0000(\d+)\u0000/g,
+    (_, index) =>
+      `<span class="text-primary-light font-medium">${matches[Number(index)]}</span>`
+  );
+};
 ---
 
 <section id="projects" class="py-20 lg:py-28">
@@ -69,9 +132,21 @@ const projects = [
     </h2>
     <div class="w-16 h-1 bg-primary mx-auto mb-12 reveal"></div>
 
+    <div class="flex flex-wrap justify-center gap-3 mb-12 reveal">
+      {filters.map((filter, index) => (
+        <button
+          type="button"
+          class={`filter-btn${index === 0 ? ' active' : ''}`}
+          data-filter={filter.value}
+        >
+          {filter.label}
+        </button>
+      ))}
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {projects.map(project => (
-        <div class="glass-card p-6 flex flex-col reveal">
+        <div class="glass-card p-6 flex flex-col reveal" data-category={project.category}>
           <div class="flex items-center justify-between mb-3">
             <h3 class="text-lg font-bold text-white">{project.title}</h3>
             {project.link && (
@@ -89,7 +164,7 @@ const projects = [
             )}
           </div>
           {(project.duration || project.org) && <p class="text-text-muted text-xs mb-3">{project.duration || project.org}</p>}
-          <p class="text-text-muted text-sm mb-4 flex-1">{project.desc}</p>
+          <p class="text-text-muted text-sm mb-4 flex-1" set:html={highlight(project.desc)} />
           <div class="flex flex-wrap gap-2">
             {project.tags.map(tag => (
               <span class="px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary-light border border-primary/20">
@@ -102,3 +177,22 @@ const projects = [
     </div>
   </div>
 </section>
+
+<script>
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const projectCards = document.querySelectorAll<HTMLElement>('#projects [data-category]');
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+
+      filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
+
+      projectCards.forEach((card) => {
+        const show = filter === 'all' || card.dataset.category === filter;
+        card.style.display = show ? '' : 'none';
+        if (show) card.classList.add('active');
+      });
+    });
+  });
+</script>

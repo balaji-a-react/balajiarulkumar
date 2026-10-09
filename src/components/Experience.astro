@@ -1,20 +1,55 @@
 ---
+const monthLabel = (value: string) => {
+  const [year, month] = value.split('-').map(Number);
+  return new Date(year, month - 1).toLocaleString('en-US', { month: 'short', year: 'numeric' });
+};
+
+const monthsBetween = (start: string, end: string) => {
+  const [startYear, startMonth] = start.split('-').map(Number);
+  const [endYear, endMonth] = end.split('-').map(Number);
+  return (endYear - startYear) * 12 + (endMonth - startMonth) + 1;
+};
+
+const formatDuration = (months: number) => {
+  const years = Math.floor(months / 12);
+  const remainder = months % 12;
+  const parts: string[] = [];
+  if (years) parts.push(`${years} ${years === 1 ? 'yr' : 'yrs'}`);
+  if (remainder) parts.push(`${remainder} ${remainder === 1 ? 'mo' : 'mos'}`);
+  return parts.join(' ');
+};
+
 const experiences = [
- 
+  {
+    title: 'Independent Frontend Developer',
+    company: 'Independent Projects',
+    companyLink: '',
+    start: '2026-01',
+    end: '2026-09',
+    location: 'Remote',
+    bullets: [
+      'Independently developed and delivered responsive websites using Astro, TypeScript, and Tailwind CSS, creating reusable UI components for client requirements.',
+      'Implemented frontend features for an existing ERP application using React.js and TypeScript, including leave management workflows, REST API integration, and form validation.',
+    ],
+  },
   {
     title: 'Associate Software Engineer',
-    company: 'OX Software Private Limited',
+    company: 'OX Softwares Private Limited',
     companyLink: 'https://www.oxsoftwares.com',
-    duration: 'May 2024 – Dec 2025',
+    start: '2024-05',
+    end: '2025-12',
     location: 'Palani, Tamil Nadu',
     bullets: [
-      'Developed and maintained responsive, production frontend modules across multiple company products using React.js and TypeScript.',
-      'Built reusable UI components documented with Storybook, and integrated REST/GraphQL APIs to power real-time, data-driven interfaces.',
-      'Participated in sprint planning, code reviews, and requirement-gathering discussions as part of cross-functional, agile teams, managing state with Zustand and Context API.',
+      'Developed frontend features using React.js and TypeScript, building reusable components and customizing UI libraries for forms, data tables, dashboards, and business workflows.',
+      'Integrated GraphQL queries and mutations using Apollo Client and REST APIs to support CRUD operations, handling asynchronous data states and managing shared state with Zustand and Context API.',
+      'Collaborated with team members to understand business requirements, plan frontend implementations, and deliver features in coordination with backend developers.',
+      'Diagnosed and resolved production issues involving responsive layouts, API data handling, form validation, component rendering, and frontend performance.',
     ],
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'GraphQL', 'Zustand', 'Context API', 'Git', 'Storybook'],
   },
-];
+].map((exp) => ({
+  ...exp,
+  duration: `${monthLabel(exp.start)} – ${monthLabel(exp.end)} (${formatDuration(monthsBetween(exp.start, exp.end))})`,
+}));
 ---
 
 <section id="experience" class="py-20 lg:py-28">
@@ -42,7 +77,7 @@ const experiences = [
               <div class="glass-card p-6">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                   <h3 class="text-lg font-bold text-white">{exp.title}</h3>
-                  <span class="text-sm text-text-muted">{exp.duration}</span>
+                  <span class="text-sm text-text-muted whitespace-nowrap">{exp.duration}</span>
                 </div>
                 {exp.companyLink ? (
                   <a
@@ -58,7 +93,7 @@ const experiences = [
                 )}
                 {exp.location && <p class="text-text-muted text-xs mt-1 mb-4">{exp.location}</p>}
 
-                <ul class="space-y-2 mb-4">
+                <ul class="space-y-2">
                   {exp.bullets.map(bullet => (
                     <li class="text-text-muted text-sm flex gap-2">
                       <span class="text-primary mt-1 flex-shrink-0">▹</span>
@@ -66,14 +101,6 @@ const experiences = [
                     </li>
                   ))}
                 </ul>
-
-                <div class="flex flex-wrap gap-2">
-                  {exp.tags.map(tag => (
-                    <span class="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary-light border border-primary/20">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
           </div>

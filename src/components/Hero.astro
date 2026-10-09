@@ -1,5 +1,12 @@
 ---
-
+const resumeFile = '/assets/Balaji-Arulkumar-Resume.pdf';
+const downloadName = 'Balaji-Arulkumar-Resume.pdf';
+const contact = {
+  location: 'Chennai, Tamil Nadu',
+  email: 'balajiarul158@gmail.com',
+  phone: '+91 96779 32264',
+  phoneHref: 'tel:+919677932264',
+};
 ---
 
 <section id="home" class="min-h-screen flex items-center justify-center dot-pattern relative py-24 md:py-16">
@@ -7,16 +14,48 @@
     <div class="flex flex-col-reverse md:flex-row items-center justify-center gap-12 md:gap-16">
       <!-- Left: Text Content -->
       <div class="flex-1 text-center md:text-left">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20 mb-5 reveal">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+          Open to Work
+        </span>
         <p class="text-primary text-sm font-medium tracking-wider uppercase mb-3 reveal">Hello, I'm</p>
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 reveal">
           Balaji Arulkumar
         </h1>
         <p class="text-xl sm:text-2xl text-primary-light font-medium mb-4 reveal">
-          Frontend Developer
+          Frontend React Developer
         </p>
         <p class="text-text-muted text-base sm:text-lg max-w-lg mx-auto md:mx-0 mb-8 reveal">
-          2+ years building scalable, responsive web applications with React, TypeScript, and modern CSS frameworks.
+          2+ years of combined professional and independent experience building production web
+          applications with React.js, TypeScript, and Astro — from reusable UI components and
+          GraphQL/REST API integration to business workflows for ERP and client websites.
         </p>
+
+        <!-- Inline Contact Details -->
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2 mb-8 reveal">
+          <span class="inline-flex items-center gap-2 text-text-muted text-sm">
+            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+            </svg>
+            {contact.location}
+          </span>
+          <a href={`mailto:${contact.email}`} class="inline-flex items-center gap-2 text-text-muted hover:text-primary transition-colors text-sm">
+            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            {contact.email}
+          </a>
+          <a href={contact.phoneHref} class="inline-flex items-center gap-2 text-text-muted hover:text-primary transition-colors text-sm">
+            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            {contact.phone}
+          </a>
+        </div>
 
         <!-- CTA Buttons -->
         <div class="flex flex-wrap gap-4 justify-center md:justify-start mb-8 reveal">
@@ -32,11 +71,21 @@
           >
             View Projects
           </a>
+          <a
+            href={resumeFile}
+            download={downloadName}
+            class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary-light text-white font-medium rounded-lg transition-colors duration-200"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            Download Resume
+          </a>
         </div>
 
         <!-- Social Links -->
         <div class="flex gap-4 justify-center md:justify-start reveal">
-          <a href="https://github.com/balaji-arulkumar" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-text-muted hover:text-primary transition-colors">
+          <a href="https://github.com/balaji-a-react" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-text-muted hover:text-primary transition-colors">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           </a>
           <a href="https://www.linkedin.com/in/balaji-a-react" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-text-muted hover:text-primary transition-colors">

@@ -2,14 +2,16 @@
 const navLinks = [
   { href: '/#home', label: 'Home', section: 'home' },
   { href: '/#about', label: 'About', section: 'about' },
-  { href: '/#skills', label: 'Skills', section: 'skills' },
   { href: '/#experience', label: 'Experience', section: 'experience' },
-  { href: '/#education', label: 'Education', section: 'education' },
+  { href: '/#skills', label: 'Skills', section: 'skills' },
   { href: '/#projects', label: 'Projects', section: 'projects' },
+  { href: '/#education', label: 'Education', section: 'education' },
   { href: '/#events', label: 'Events', section: 'events' },
-  { href: '/resume', label: 'Resume', section: 'resume' },
   { href: '/#contact', label: 'Contact', section: 'contact' },
 ];
+
+const resumeFile = '/assets/Balaji-Arulkumar-Resume.pdf';
+const downloadName = 'Balaji-Arulkumar-Resume.pdf';
 ---
 
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-dark/80 backdrop-blur-md border-b border-transparent">
@@ -34,6 +36,18 @@ const navLinks = [
       </div>
 
       <div class="flex items-center gap-2">
+        <!-- Download Resume -->
+        <a
+          href={resumeFile}
+          download={downloadName}
+          class="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-light text-white text-sm font-medium rounded-lg transition-colors duration-200"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+          </svg>
+          Resume
+        </a>
+
         <!-- Theme Toggle -->
         <button
           id="theme-toggle"
@@ -74,6 +88,16 @@ const navLinks = [
           {link.label}
         </a>
       ))}
+      <a
+        href={resumeFile}
+        download={downloadName}
+        class="inline-flex items-center justify-center gap-2 mt-2 px-4 py-2 bg-primary hover:bg-primary-light text-white text-sm font-medium rounded-lg transition-colors duration-200"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+        </svg>
+        Download Resume
+      </a>
     </div>
   </div>
 </nav>
